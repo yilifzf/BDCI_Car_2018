@@ -1,0 +1,20 @@
+{
+	"message":"",
+	"value": [
+		{
+			"attribute1":"1",
+			"attribute2":"-1",
+			"attribute3":"1"
+		},{
+			"attribute1":"2",
+			"attribute2":"0",
+			"attribute3":"1"
+		},{
+			"attribute1":"3",
+			"attribute2":"1",
+			"attribute3":"1"
+		}
+	],
+	"code": 200,
+	"redirect": ""
+}

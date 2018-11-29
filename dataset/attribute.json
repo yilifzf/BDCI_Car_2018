@@ -1,0 +1,48 @@
+{
+	"message":"",
+	"value": [
+		{
+			"attribute1":"1",
+			"attribute2":"动力",
+			"attribute3":"0"
+		},{
+			"attribute1":"2",
+			"attribute2":"价格",
+			"attribute3":"1"
+		},{
+			"attribute1":"3",
+			"attribute2":"内饰",
+			"attribute3":"0"
+		},{
+			"attribute1":"4",
+			"attribute2":"配置",
+			"attribute3":"0"
+		},{
+			"attribute1":"5",
+			"attribute2":"安全性",
+			"attribute3":"1"
+		},{
+			"attribute1":"6",
+			"attribute2":"外观",
+			"attribute3":"0"
+		},{
+			"attribute1":"7",
+			"attribute2":"操控",
+			"attribute3":"0"
+		},{
+			"attribute1":"8",
+			"attribute2":"油耗",
+			"attribute3":"0"
+		},{
+			"attribute1":"9",
+			"attribute2":"空间",
+			"attribute3":"0"
+		},{
+			"attribute1":"10",
+			"attribute2":"舒适性",
+			"attribute3":"0"
+		}
+	],
+	"code": 200,
+	"redirect": ""
+}

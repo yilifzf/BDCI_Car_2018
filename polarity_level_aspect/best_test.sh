@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=2 python ab_polarity.py --mode 3 --use_elmo 2 --test_dir cp_HEAT_0#cp_AT_LSTM_0#cp_HEAT_ft2#cp_AT_LSTM_ft2#cp_HEAT_2#cp_AT_LSTM_2#cp_HEAT_tc#cp_AT_LSTM_tc#cp_GCAE_0#cp_GCAE_2#cp_GCAE_ft2#cp_GCAE_tc --saved 3
