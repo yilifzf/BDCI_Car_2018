@@ -1,10 +1,15 @@
 # 汽车行业用户观点主题及情感识别 （Just a test 团队决赛一等奖方案）
 
+
 ## 注意：
 * 目前开源的代码按照下面的说明应该是可以跑通的，但是因为整个框架比较复杂所以可能有文档没有说清楚的地方，遇到问题可以给我们提issue，或者email
 * 我们的实验表明，其实只用BERT就能达到一个非常好的结果，和全部模型比差距比较小，所以如果不是太关心完美复现，可以只跑bert的代码，这样会省去很多的时间。
 * 我们的代码目前还没有进行优化，所以里面会有很多不完美的地方，比如我们很多网络没有用batch，请大家见谅。以后有时间的话，我们会考虑更新,优化一下代码结构。
 * 如果有其他的问题也可以给我们反馈。
+
+## 关于将tf-checkpoint转为pytorch_model.bin的问题。
+* 由于huggingface的pytorch版的BERT已经更改了转换的代码以及load的方式，主要就是从最初版本的存储BertModel改成了BertForPreTraining，所以如果你用huggingface最新的脚本转换得到的pytorch_model.bin会和我们基于最初版本转换脚本的代码不兼容，因此提醒一下，请使用我们提供的脚本或者huggingface最早的转换脚本。
+* 不过huggingface更改之后的脚本可能解决一些潜在的bug，所以后续计划中我们会将整个BERT模块和最新版本兼容。
 
 ## 代码运行环境：
     * 基于Anaconda的python3 (最好是python3.5)
@@ -129,7 +134,13 @@ python submit2.py
 2. 微调Bert阶段：
     * 我们修改了一个开源的pytorch版本的[BERT](https://github.com/huggingface/pytorch-pretrained-BERT), 并在本数据集上fine tune了谷歌放出来的[中文BERT](https://github.com/google-research/bert/blob/master/multilingual.md)
     * 首先我们我们将数据集按五折处理成tsv格式，放在bert/glue_data下，(我们已经帮你处理过了)
-    * 下载预训练的BERT模型，在backup_chinese_bert.zip中，我们已经帮你将模型转为了pytorch模型，只需将chinese_L-12_H-768_A-12文件夹放在bert/目录下
+    * 下载预训练的BERT模型，运行以下命令行完成转换：
+    ```
+    export BERT_BASE_DIR=chinese_L-12_H-768_A-12
+    python convert_tf_checkpoint_to_pytorch.py --tf_checkpoint_path $BERT_BASE_DIR/bert_model.ckpt --bert_config_file $BERT_BASE_DIR/bert_config.json --pytorch_dump_path $BERT_BASE_DIR/pytorch_model.bin
+    ```
+    * 注意如果你使用huggingface最新的转换脚本会出现state_dict不匹配的问题。所以你最好使用我们提供的转换脚本，或者是我们提供的huggingface最早的转换脚本convert_tf_checkpoint_to_pytorch_raw.py。
+    * 或者将百度云中转换好的chinese_L-12_H-768_A-12文件夹放在bert/目录下
     * 设置环境变量：
         ```
         export GLUE_DIR=glue_data
