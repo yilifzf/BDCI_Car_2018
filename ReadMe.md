@@ -95,6 +95,7 @@ python submit2.py
 ## 预处理模块：
 * 主要就是分词，分别运行clean_data.py, 和clean_test.py文件在data文件夹中生成预处理好的train.txt和test.txt
 * 不过我们已经提供了预处理好的文件，所以不需要运行。
+* 需要注意的是，如果你重新运行了分词程序，那么你生成的数据集的词表可能和我们提供的词向量的词表不一致，所以你必须重新运行prepare_w2v.py里面的prepare_w2v函数构建新的词表和词向量。
 
 ## 运行主题分类模块：
 1. 训练阶段：(由于训练时间比较长，你可以直接跳到第三步加载我们预训练好的模型）
@@ -262,6 +263,11 @@ cd data
 python submit2.py
 ```
 生成的submi2.csv 即为我们的提交文件。
+
+## ISSUES:
+* 关于UNK的问题：
+    * 由于本比赛是公开测试集的，所以我们没有考虑UNK的问题，如果想把本代码用于实际应用之中，需要添加对UNK的处理，即使用prepare_w2v_with_UNK.py生成词表和词向量而不是prepare_w2v.py
+
 
 ## Contact:
 sqfzf69(At)163.com

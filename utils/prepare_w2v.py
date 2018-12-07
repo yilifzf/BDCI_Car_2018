@@ -180,8 +180,8 @@ def test():
 if __name__ == '__main__':
     # main()
     # prepare_w2v('16res')
-    # prepare_w2v()
+    prepare_w2v()
     # load_ft()
-    load_vocab()
+    # load_vocab()
     # test_miss()
     # test('16res')

@@ -742,9 +742,9 @@ def train(args):
             train_sampler = DistributedSampler(train_data)
         train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=args.train_batch_size)
 
-        model.train()
         min_loss = 100000000
         for epoch in trange(int(args.num_train_epochs), desc="Epoch"):
+
             tr_loss = 0
             nb_tr_examples, nb_tr_steps = 0, 0
             for step, (input_ids, input_mask, segment_ids, label_ids) in enumerate(
@@ -753,7 +753,7 @@ def train(args):
                 input_mask = input_mask.to(device)
                 segment_ids = segment_ids.to(device)
                 label_ids = label_ids.to(device)
-
+                model.train()
                 loss, _ = model(input_ids, segment_ids, input_mask, label_ids)
                 if n_gpu > 1:
                     loss = loss.mean()  # mean() to average on multi-gpu.
